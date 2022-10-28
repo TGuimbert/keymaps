@@ -1,7 +1,10 @@
 // Copyright 2022 Cole Smith <cole@boadsource.xyz>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include "quantum/keymap_extras/keymap_bepo.h"
 #include QMK_KEYBOARD_H
+
+#define IGNORE_MOD_TAP_INTERRUPT
 
 enum layers {
     _QWERTY,
@@ -13,29 +16,38 @@ enum layers {
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
+#define TG_O MT(MOD_LALT, BP_O)
+#define TG_U MT(MOD_LGUI, BP_U)
+#define TG_A MT(MOD_LCTL, BP_A)
+#define TG_I MT(MOD_LSFT, BP_I)
+#define TG_T MT(MOD_RSFT, BP_T)
+#define TG_S MT(MOD_RCTL, BP_S)
+#define TG_N MT(MOD_RGUI, BP_N)
+#define TG_R MT(MOD_LALT, BP_R)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  
 /* QWERTY
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  -   |
+ * | Tab  |   À  |   B  |   É  |   .  |   -  |                    |   ^  |   V  |   L  |   M  |   X  |  Ç   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LCTRL |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
+ * |Enter |   O  |   U  |   A  |   I  |   J  |-------.    ,-------|   G  |   T  |   S  |   N  |   R  |  F   |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+ * |LShift|   Q  |   Y  |   È  |   P  |   K  |-------|    |-------|   W  |   D  |   ,  |   H  |   C  |  Z   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
+ *                   | LGUI |LOWER |   E  | /   ,   /       \  '   \  |Space |BackSP|RAISE |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 
  [_QWERTY] = LAYOUT(
   KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
-  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
-  KC_LCTL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-                          KC_LALT,    KC_LGUI, LOWER, KC_SPC,  KC_ENT,   RAISE,   KC_BSPC, KC_RGUI
+  KC_TAB, BP_AGRV,  BP_B,    BP_EACU, BP_DOT, BP_MINS,                BP_DCIR,    BP_V,    BP_L,    BP_M,    BP_X,    BP_CCED,
+  KC_ENT ,  TG_O,   TG_U,    TG_A,    TG_I,    BP_J,                     BP_G,    TG_T,    TG_S,    TG_N,    TG_R,    BP_F,
+  KC_LSFT,  BP_Q,   BP_Y,  BP_EGRV,   BP_P,    BP_K, KC_LBRC,  QK_BOOT,  BP_W,    BP_D,    KC_COMM, BP_H,    BP_C,    BP_Z,
+                           KC_LGUI,  LOWER,    BP_E, BP_COMM,  BP_QUOT, KC_SPC, KC_BSPC,   RAISE
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
