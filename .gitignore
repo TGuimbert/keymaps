@@ -1,3 +1,9 @@
 *.uf2
 *.hex
 *.bin
+*.map
+*.elf
+obj_*
+
+.direnv/
+qmk_firmware/
