@@ -6,4 +6,3 @@
 obj_*
 
 .direnv/
-qmk_firmware/

@@ -7,11 +7,11 @@ COMPILED_KEYMAP = $(COMPILED_KEYMAP_LOCATION ).elf $(COMPILED_KEYMAP_LOCATION ).
 
 all: compile
 
-qmk_firmware:
+qmk_firmware/readme.md:
 	git submodule update --init --recursive
 
 link: qmk_firmware/keyboards/boardsource/lulu/keymaps/TGuimbert/
-qmk_firmware/keyboards/boardsource/lulu/keymaps/TGuimbert/: qmk_firmware
+qmk_firmware/keyboards/boardsource/lulu/keymaps/TGuimbert/: qmk_firmware/readme.md
 	mkdir $@
 	ln -s $(shell pwd)/lulu/* $@
 
