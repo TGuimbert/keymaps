@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   {  |   }  |  UP  |   (  |   )  |                    |   -  |   7  |   8  |   9  |   *  |      |
+ * |      |   {  |   }  |  UP  |   (  |   )  |                    |   -  |   7  |   8  |   9  |   *  |NUMLOC|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |   «  | LEFT | DOWN | RIGHT|   »  |-------.    ,-------|   =  |   4  |   5  |   6  |   /  |   \  |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
-  _______, BP_LCBR, BP_RCBR,   KC_UP, BP_LPRN, BP_RPRN,                   BP_MINS,   KC_P7,   KC_P8,   KC_P9, BP_ASTR, _______,
+  _______, BP_LCBR, BP_RCBR,   KC_UP, BP_LPRN, BP_RPRN,                   BP_MINS,   KC_P7,   KC_P8,   KC_P9, BP_ASTR, KC_NUM,
   _______, TG_LDAQ, TG_LEFT, TG_DOWN, TG_RGHT, BP_RDAQ,                    BP_EQL,   TG_P4,   TG_P5,   TG_P6, TG_SLSH, BP_BSLS,
   _______, BP_LBRC, BP_RBRC, BP_LABK, BP_RABK, _______, _______, _______, XXXXXXX,   KC_P1,   KC_P2,   KC_P3, BP_PLUS, BP_PERC,
                              _______, _______, _______, _______, _______,   KC_P0, _______, _______
