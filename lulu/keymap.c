@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  
 /* FR-GODOX
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ESC  |   $  |   &  |   (  |   )  |      |                    |      |   @  |   "  |   =  |   %  |      |
+ * | ESC  |   $  |   &  |   (  |   )  |      |                    |      |   @  |   "  |   =  |   %  |SCREEN|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   À  |   B  |   É  |   .  |   -  |                    |   ^  |   V  |   L  |   M  |   X  |  Ç   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_QWERTY] = LAYOUT(
-   KC_ESC,  BP_DLR, BP_AMPR, BP_LPRN, BP_RPRN, XXXXXXX,                   XXXXXXX,   BP_AT, BP_DQUO,  BP_EQL, BP_PERC, XXXXXXX,
+   KC_ESC,  BP_DLR, BP_AMPR, BP_LPRN, BP_RPRN, XXXXXXX,                   XXXXXXX,   BP_AT, BP_DQUO,  BP_EQL, BP_PERC, KC_PSCR,
    KC_TAB, BP_AGRV,    BP_B, BP_EACU,  BP_DOT, BP_MINS,                   BP_DCIR,    BP_V,    BP_L,    BP_M,    BP_X, BP_CCED,
    KC_ESC,    TG_O,    TG_U,    TG_A,    TG_I,    BP_J,                      BP_G,    TG_T,    TG_S,    TG_N,    TG_R,    BP_F,
     LOWER,    TG_Q,    BP_Y, BP_EGRV,    BP_P,    BP_K, KC_MPLY, QK_BOOT,    BP_W,    BP_D, BP_ECIR,    BP_H,    TG_C,    BP_Z,
