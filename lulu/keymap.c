@@ -7,14 +7,16 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 
 enum layers {
-    _QWERTY,
+    _CUSTOM,
     _RAISE,
     _LOWER,
-    _ADJUST
+    _ADJUST,
+    _QWERTY
 };
 
 #define RAISE MO(_RAISE)
 #define LOWER TG(_LOWER)
+#define QWERTY TG(_QWERTY)
 
 #define TG_O MT(MOD_LALT, BP_O)
 #define TG_U MT(MOD_LGUI, BP_U)
@@ -57,8 +59,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
-[_QWERTY] = LAYOUT(
-   KC_ESC,  BP_DLR, BP_AMPR, BP_LPRN, BP_RPRN, XXXXXXX,                   XXXXXXX,   BP_AT, BP_DQUO,  BP_EQL, BP_PERC, KC_PSCR,
+[_CUSTOM] = LAYOUT(
+   KC_ESC,  BP_DLR, BP_AMPR, BP_LPRN, BP_RPRN,  QWERTY,                   XXXXXXX,   BP_AT, BP_DQUO,  BP_EQL, BP_PERC, KC_PSCR,
    KC_TAB, BP_AGRV,    BP_B, BP_EACU,  BP_DOT, BP_MINS,                   BP_DCIR,    BP_V,    BP_L,    BP_M,    BP_X, BP_CCED,
    KC_ESC,    TG_O,    TG_U,    TG_A,    TG_I,    BP_J,                      BP_G,    TG_T,    TG_S,    TG_N,    TG_R,    BP_F,
     LOWER,    TG_Q,    BP_Y, BP_EGRV,    BP_P,    BP_K, KC_MPLY, QK_BOOT,    BP_W,    BP_D, BP_ECIR,    BP_H,    TG_C,    BP_Z,
@@ -121,14 +123,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
-  [_ADJUST] = LAYOUT(
+[_ADJUST] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              _______, _______, _______, _______, _______,  _______, _______, _______
-  )
-};
+),
+/* QWERTY
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  -   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |LCTRL |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
+ * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
+ * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   | LAlt | LGUI |      | /Space  /       \Enter \  |      |BackSP|CUSTOM|
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+[_QWERTY] = LAYOUT(
+  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
+  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
+  KC_LCTL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+                          KC_LALT,    KC_LGUI, _______, KC_SPC,  KC_ENT, _______,   KC_BSPC, QWERTY
+),};
 
 layer_state_t layer_state_set_user(layer_state_t state) {
    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
